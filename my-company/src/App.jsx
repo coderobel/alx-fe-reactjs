@@ -6,27 +6,22 @@ import Home from './components/Home'
 import About from './components/About'
 import Services from './components/Services'
 import Contact from './components/Contact'
-import { createBrowserRouter , RouterProvider } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-const router = createBrowserRouter([
-  {
-    path: "/", element: <Home />,
-  },
-  {
-    path: "about/", element: <About />,
-  },
-  {
-    path: "services/", element: <Services />,
-  },
-  {
-    path: "contact/", element: <Contact />,
-  }
-])
+
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/services" element={<Services />} />
+        </Routes>
+      </BrowserRouter>
       <div>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
