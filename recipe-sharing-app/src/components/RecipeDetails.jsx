@@ -2,7 +2,7 @@ import  useRecipeStore  from './recipeStore';
 import DeleteRecipe from './DeleteRecipeButton';
 import EditRecipe from './EditRecipeForm';
 
-  const RecipeDetails = ({ recipeId }) => {
+const RecipeDetails = ({ recipeId }) => {
     const recipe = useRecipeStore(state =>
       state.recipes.find(recipe => recipe.id === recipeId)
     );
@@ -16,4 +16,5 @@ import EditRecipe from './EditRecipeForm';
         <DeleteRecipe />
       </div>
     );
-  };
+};
+export default RecipeDetails;
