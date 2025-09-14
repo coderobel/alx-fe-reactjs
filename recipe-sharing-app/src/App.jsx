@@ -3,18 +3,20 @@ import './App.css';
 import AddRecipeForm from './components/AddRecipeForm';
 import RecipeList from './components/RecipeList';
 import RecipeDetails from './components/RecipeDetails';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
-  const router = createBrowserRouter([
-    { path:"/",element: <RecipeList />},
-    { path:"Add Recipe/",element: <AddRecipeForm />},
-    { path:"Recipe Details/:recipeId",element: <RecipeDetails />},
-  ]);
+  
     return(
-      <StrictMode>
-        <RouterProvider router={router} />
-      </StrictMode>
+      <>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<RecipeList />} />
+            <Route path="Add Recipe/" element={<AddRecipeForm />} />
+            <Route path="Recipe Details/:recipeId" element={<RecipeDetails />} /> 
+          </Routes>
+        </BrowserRouter>
+      </>
     );
 }
 export default App;
