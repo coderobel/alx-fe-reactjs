@@ -1,16 +1,27 @@
 import { useState } from "react";
-
+import { fetchUserData } from "../services/githubService";
 function Search (){
   const [username, setUsername] = useState("");
+  const [userData, setUserData] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-  const handleSubmit =(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Searching for:", username);
+    setLoading(true);
+    setError(null);
+    setUserData(null);
+    try {
+        const data = await fetchUserData(username);
+        setUserData(data);
+    } catch (err) {
+        setError(err.message);
+    } finally {
+        setLoading(false);
+    }
   };
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <h1 className="text-3xl font-bold">GitHub User Search</h1>
-
+    <div className="flex flex-col items-center gap-4 p-4">
       <form onSubmit={handleSubmit} className="flex gap-2">
         <input
           type="text"
@@ -26,6 +37,28 @@ function Search (){
           Search
         </button>
       </form>
+
+      {loading && <p>Loading...</p>}
+      {error && <p className="text-red-600">Looks like we can't find the user</p>}
+
+      {userData && (
+        <div className="bg-white shadow-md rounded-lg p-6 text-center">
+          <img
+            src={userData.avatar_url}
+            alt={userData.login}
+            className="w-24 h-24 rounded-full mx-auto mb-4"
+          />
+          <h2 className="text-xl font-bold">{userData.name || userData.login}</h2>
+          <a
+            href={userData.html_url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-600 hover:underline"
+          >
+            View Profile
+          </a>
+        </div>
+      )}
     </div>
   );
 }
