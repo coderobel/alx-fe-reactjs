@@ -12,7 +12,7 @@ function Search (){
     e.preventDefault();
     setLoading(true);
     setError(null);
-    try {
+    try{
         const data = await fetchUserData(username, location, minRepos);
         setResults(data.items || []);
     } catch (err) {
