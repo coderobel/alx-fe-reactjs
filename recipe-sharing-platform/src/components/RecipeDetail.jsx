@@ -26,6 +26,7 @@ export default function RecipeDetail() {
             <h1 className="text-3xl font-bold">Recipe Details</h1>
             <h1 className="text-3xl font-bold mb-4">{recipe.ingredients}</h1>
             <p className="text-gray-600 mb-4">{recipe.instructions}</p>
+            <img>{recipe.image}</img>
             <p className="text-gray-800">More details about this recipe coming soon...</p>
         </div>
     );
