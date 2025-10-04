@@ -22,7 +22,7 @@ export default function RecipeDetail() {
     );
     }
     return(
-        <div className="p-8">
+        <div className="p-8 shadow-md">
             <h1 className="text-3xl font-bold">Recipe Details</h1>
             <h1 className="text-3xl font-bold mb-4">{recipe.ingredients}</h1>
             <p className="text-gray-600 mb-4">{recipe.instructions}</p>
