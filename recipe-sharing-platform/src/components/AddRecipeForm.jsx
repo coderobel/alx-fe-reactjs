@@ -8,7 +8,7 @@ export default function AddRecipeForm() {
   });
 
   const handleChange = (e) => {
-    const { id, value } = e.target;
+    const { id, value } = e.target.value;
     setRecipe({ ...recipe, [id]: value });
   };
 
