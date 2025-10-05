@@ -7,16 +7,36 @@ export default function AddRecipeForm() {
     steps: ""
   });
 
+  const [errors, setErrors] = useState({});
+
   const handleChange = (e) => {
     const { id, value } = e.target.value;
     setRecipe({ ...recipe, [id]: value });
+    setErrors((prevErrors) => ({ ...prevErrors, [id]: "" }));
+  };
   };
 
-  const handleSubmit = (e) => {
+
+ const validate = () => {
+    const newErrors = {};
+    if (!recipe.title.trim()) newErrors.title = "Title is required.";
+    if (!recipe.ingredients.trim()) newErrors.ingredients = "Ingredients are required.";
+    if (!recipe.steps.trim()) newErrors.steps = "Steps are required.";
+    return newErrors;
+  };
+ const handleSubmit = (e) => {
     e.preventDefault();
+    const newErrors = validate();
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return; // ❌ Stop if there are errors
+    }
+
+    // ✅ If valid
     console.log("Recipe submitted:", recipe);
-    // Later: You could save to a backend or localStorage here
-    setRecipe({ title: "", ingredients: "", steps: "" }); // clear form
+    setRecipe({ title: "", ingredients: "", steps: "" });
+    setErrors({});
   };
 
   return (
