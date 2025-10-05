@@ -4,7 +4,7 @@ export default function AddRecipeForm() {
   const [recipe, setRecipe] = useState({
     title: "",
     ingredients: "",
-    preparation: ""
+    steps: ""
   });
 
   const handleChange = (e) => {
@@ -16,7 +16,7 @@ export default function AddRecipeForm() {
     e.preventDefault();
     console.log("Recipe submitted:", recipe);
     // Later: You could save to a backend or localStorage here
-    setRecipe({ title: "", ingredients: "", preparation: "" }); // clear form
+    setRecipe({ title: "", ingredients: "", steps: "" }); // clear form
   };
 
   return (
@@ -56,11 +56,11 @@ export default function AddRecipeForm() {
 
       <div>
         <label htmlFor="preparation" className="block text-gray-700 font-medium mb-1">
-          Preparation
+          Steps
         </label>
         <textarea
           id="preparation"
-          value={recipe.preparation}
+          value={recipe.steps}
           onChange={handleChange}
           className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-amber-400"
           rows="4"
