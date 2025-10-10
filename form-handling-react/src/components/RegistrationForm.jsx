@@ -15,11 +15,18 @@ export default function RegistrationForm() {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if(!username || !email || !password){
+        if(!username){
             setError("All fields are required!");
             return;
         }
-
+        if(!password){
+            setError("All fields are required!");
+            return;
+        }
+        if(!email){
+            setError("All fields are required!");
+            return;
+        }
         setError("");
         console.log("Form submitted:", formData);
         alert(`Welcome, ${formData.username}! Registration successful.`);
