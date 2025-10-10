@@ -37,7 +37,7 @@ export default function RegistrationForm() {
                 type="text"
                 id="username"
                 name="username"
-                value={formData.username}
+                value={username}
                 onChange={handleChange}
                 className="w-full border px-2 py-1 rounded"/>
             </div>
@@ -50,7 +50,7 @@ export default function RegistrationForm() {
                     type="text"
                     id="email"
                     name="email"
-                    value={formData.email}
+                    value={email}
                     onChange={handleChange}
                     className="w-full border px-2 py-1 rounded"/>
             </div>
@@ -63,7 +63,7 @@ export default function RegistrationForm() {
                     type="text"
                     id="password"
                     name="password"
-                    value={formData.password}
+                    value={password}
                     onChange={handleChange}
                     className="w-full border px-2 py-1 rounded"
                     />
