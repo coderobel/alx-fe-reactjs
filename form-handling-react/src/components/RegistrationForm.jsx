@@ -15,7 +15,7 @@ export default function RegistrationForm() {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if(!formData.username || !formData.email || !formData.password){
+        if(!username || !email || !password){
             setError("All fields are required!");
             return;
         }
