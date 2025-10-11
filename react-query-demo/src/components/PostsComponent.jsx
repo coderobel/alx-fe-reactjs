@@ -26,6 +26,7 @@ export default function PostsComponent () {
             {data.map(item => (
                 <div key={item.id}>{item.name}</div>
             ))}
+            <button onClick={fetchPosts}>Submit</button>
         </div>
     );
 }
