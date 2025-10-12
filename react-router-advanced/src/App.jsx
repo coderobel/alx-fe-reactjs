@@ -4,6 +4,8 @@ import ProfileDetails from './pages/ProfileDetails';
 import ProfileSettings from './pages/ProfileSettings';
 import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
+import ProtectedRoute from './components/ProtectedRoute';
+import Profile from './components/Profile';
 
 export default function App() {
  return (
@@ -21,6 +23,17 @@ export default function App() {
           <Route path="settings" element={<ProfileSettings />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:id" element={<BlogPost />} />
+          <Route path="/login" element={<Login />} />
+
+  {/* Protected route */}
+          <Route
+    path="/profile/*"
+    element={
+      <ProtectedRoute>
+        <Profile />
+      </ProtectedRoute>
+    }
+  />
         </Route>
       </Routes>
   </Router>
