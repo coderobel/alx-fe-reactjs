@@ -10,8 +10,10 @@ export default function Profile() {
                 <Link to="settings">Profile Settings</Link>
             </nav>
 
-            <hr />
-            <OutLet />
+            <Routes>
+                <Route path="details" element={<ProfileDetails />} />
+                <Route path="settings" element={<ProfileSettings />} />
+            </Routes>
         </div>
     );
 }
